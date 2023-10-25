@@ -16,5 +16,5 @@
 */
 const goodPerson = () => 'Eita pessoa boa!';
 
-const createStudent = (student) =>  {name: student, feedback: goodPerson};
+const createStudent = (student) =>  { name: student, feedback: goodPerson };
 module.exports = createStudent;
