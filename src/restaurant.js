@@ -1,29 +1,15 @@
 /* eslint-disable max-len */
 // Siga as orientações do README!
 
-;
-//  const fetchMenu = (object) => {
-//      return object;
-// };
-
 const createMenu = (obj) => {
     const newObject = { 
         fetchMenu: () => obj,
         consumption: [],
         order: (product) => {
-            const foodArr = Object.keys(obj.food);
-            const drinksArr = Object.keys(obj.drinks);
-            for (let index = 0; index < foodArr.length; index += 1) {
-                if (product === foodArr[index]) {
-                    newObject.consumption.push(product);
-                    break;
-                }
-            }
-            for (let index = 0; index < drinksArr.length; index += 1) {
-                if (product === drinksArr[index]) {
-                    newObject.consumption.push(product);
-                    break;
-                }
+            const checkItem = obj.food[product] || obj.drinks[product];
+            if (checkItem) {
+                newObject.consumption.push(product);
+                return;
             }
             return 'Item indisponível';
         },
@@ -47,8 +33,9 @@ const createMenu = (obj) => {
     return newObject;
 };
 const objetoRetornadoCreateMenu = createMenu(
-    {food: {coxinha: 3.90, sanduiche: 9.90},
-    drinks: {agua: 3.90, cerveja: 6.90}});
+    { food: { coxinha: 3.90, sanduiche: 9.90 },
+    drinks: { agua: 3.90, cerveja: 6.90 } },
+    );
 
     objetoRetornadoCreateMenu.order('sanduiche');
     objetoRetornadoCreateMenu.order('agua');
