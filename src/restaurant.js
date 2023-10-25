@@ -15,15 +15,8 @@ const createMenu = (obj) => {
         },
         pay: () => {
             let totalValue = 0;
-            const foodArr = Object.keys(obj.food);
-            const drinksArr = Object.keys(obj.drinks);
-            for (let index = 0; index < newObject.consumption.length; index += 1) {
-                if (foodArr.includes(newObject.consumption[index])) {
-                    totalValue += Number(obj.food[newObject.consumption[index]]);
-                }
-                if (drinksArr.includes(newObject.consumption[index])) {
-                    totalValue += Number(obj.drinks[newObject.consumption[index]]);
-                }
+            for (const produto of newObject.consumption) {
+                totalValue += (obj.food[produto] || obj.drinks[produto]);
             }
             totalValue *= 1.1;
             // return totalValue.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
